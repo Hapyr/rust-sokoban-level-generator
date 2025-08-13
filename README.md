@@ -10,6 +10,15 @@ The algorithm is based on the following resources:
 - [Sokoban-Level-Generator](https://github.com/AlliBalliBaba/Sokoban-Level-Generator);
   a javascript implementation by AlliBalliBaba.
 
+## Fork Extensions
+
+This is a fork of the original level generator with additional functionality:
+
+- **General Sokoban Game Implementation**: Added a complete `SokobanGame` struct with step function for gameplay simulation
+- **A* Search Integration**: Integrated pathfinding capabilities for solving generated levels
+- **Example Scripts**: Added example scripts in `src/bin/` for generating optimal and suboptimal traces
+  - See `src/bin/README.md` for detailed documentation of available scripts
+
 ## Usage
 
 In order to use the generator, add this library (via git) to your project

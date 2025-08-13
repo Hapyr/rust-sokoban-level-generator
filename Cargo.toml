@@ -1,19 +1,18 @@
 [package]
 name = "sokoban-level-generator"
-version = "0.0.0-development"
+version = "0.0.1-development"
 edition = "2021"
-authors = ["Christoph Bühler <christoph@smartive.ch>"]
+authors = ["Christoph Bühler <christoph@smartive.ch>", "Jakob Gebler <jakobgebler@mail.de>"]
 license = "Apache-2.0"
 license-file = "LICENSE"
-repository = "https://github.com/smartive/rust-sokoban-level-generator"
+repository = "https://github.com/Hapyr/rust-sokoban-level-generator.git"
 
 [dependencies]
 ndarray = "0.15.6"
+pathfinding = "4.14.0"
 rand = "0.8.5"
+rayon = "1.8.0"
+clap = { version = "4.4.0", features = ["derive"] }
 
 [dev-dependencies]
 criterion = "0.5.1"
-
-[[bench]]
-name = "level_generation"
-harness = false

@@ -1,6 +1,6 @@
+use crate::cell::Cell;
 use ndarray::Array2;
 use rand::Rng;
-use crate::cell::Cell;
 
 /// A template is a 5x5 array of cells.
 /// It composes parts of a level and is randomly rotated.
@@ -643,8 +643,8 @@ const TEMPLATE_17: Template = [
 
 #[cfg(test)]
 mod tests {
-    use crate::cell::Cell;
     use super::*;
+    use crate::cell::Cell;
 
     #[test]
     fn rotate_90_degs() {

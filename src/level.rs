@@ -1,4 +1,4 @@
-use ndarray::{Array2, s};
+use ndarray::{s, Array2};
 
 use crate::cell::Cell;
 
@@ -222,7 +222,7 @@ mod requirements {
 }
 
 mod generation {
-    use ndarray::{Array2, s};
+    use ndarray::{s, Array2};
 
     use crate::cell::Cell;
     use crate::level::Level;
@@ -325,10 +325,10 @@ mod generation {
             parts.extend(cells.slice(s![(h_base)..(h_base + 3), (w_base + 3)..=(w_base + 3)]));
         }
         if filled_height != 0 {
-            parts.extend(cells.slice(s![(h_base - 1)..=(h_base - 1),(w_base)..(w_base + 3)]));
+            parts.extend(cells.slice(s![(h_base - 1)..=(h_base - 1), (w_base)..(w_base + 3)]));
         }
         if filled_height != max_height - 1 {
-            parts.extend(cells.slice(s![(h_base + 3)..=(h_base + 3),(w_base)..(w_base + 3)]));
+            parts.extend(cells.slice(s![(h_base + 3)..=(h_base + 3), (w_base)..(w_base + 3)]));
         }
 
         parts
@@ -357,7 +357,13 @@ mod entities {
     }
 
     impl Direction {
-        fn make_move(&self, x: usize, y: usize, width: usize, height: usize) -> Option<(usize, usize)> {
+        fn make_move(
+            &self,
+            x: usize,
+            y: usize,
+            width: usize,
+            height: usize,
+        ) -> Option<(usize, usize)> {
             match self {
                 Self::Up if y > 0 => Some((x, y - 1)),
                 Self::Down if y < (height - 1) => Some((x, y + 1)),
@@ -367,15 +373,15 @@ mod entities {
             }
         }
 
-        fn iterator() -> impl Iterator<Item=Direction> {
+        fn iterator() -> impl Iterator<Item = Direction> {
             [
                 Direction::Up,
                 Direction::Down,
                 Direction::Left,
                 Direction::Right,
             ]
-                .iter()
-                .copied()
+            .iter()
+            .copied()
         }
     }
 
@@ -437,7 +443,8 @@ mod entities {
     pub fn get_possible_goal_locations(level: &Level) -> Vec<(usize, usize)> {
         let (height, width) = level.dim();
 
-        level.indexed_iter()
+        level
+            .indexed_iter()
             .filter(|(_, &cell)| cell.is_floor())
             .filter(|((h, w), _)| {
                 let h = *h;
@@ -509,7 +516,8 @@ mod entities {
 
                         // Move the player to the same direction since the player
                         // must move the box in this direction.
-                        let new_player_position = direction.make_move(box_new_x, box_new_y, width, height);
+                        let new_player_position =
+                            direction.make_move(box_new_x, box_new_y, width, height);
                         if new_player_position.is_none()
                             || !is_accessible(&level, player, new_player_position.unwrap())
                         {
@@ -563,7 +571,10 @@ mod entities {
                 return true;
             }
         } else {
-            backtrack_map.insert(id.clone(), (Array2::from_elem(level.dim(), 0), level.clone()));
+            backtrack_map.insert(
+                id.clone(),
+                (Array2::from_elem(level.dim(), 0), level.clone()),
+            );
         }
 
         let (map, _) = backtrack_map.get_mut(&id).unwrap();
