@@ -1,3 +1,4 @@
 /target
 Cargo.lock
 /game_states
+/dataset_generation/*.pkl
