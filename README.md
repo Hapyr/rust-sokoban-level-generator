@@ -24,7 +24,7 @@ This is a fork of the original level generator with additional functionality:
 In order to use the generator, add this library (via git) to your project
 with cargo. Then, import the level generator and use it to generate
 a level. The ``level_to_string`` method allows you to print the level
-in the [JSoko Level Format](https://www.sokoban-online.de/sokoban/levell-format/).
+in the JSoko Level Format.
 
 ```rust
 use sokoban_level_generator::{generate_level, level_to_string};
