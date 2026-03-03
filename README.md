@@ -103,8 +103,3 @@ The following tables shows the generation time for different level sizes.
 | 3     | 4      | 50.916 ms   |
 | 4     | 4      | 227.51 ms   |
 
-### Violin Plot (1-3 Boxes)
-
-![Violin Plot](./res/violin.svg)
-
-As we can see in the violin plot, the number of boxes has a huge impact on the generation time.
